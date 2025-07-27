@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.util.*;
 
 public class Main {
@@ -23,8 +24,8 @@ public class Main {
 
         System.out.println("Starting data generation...");
 
-        String outputFileName = "D:/output.csv";
-        int numberOfMinima = 4;
+        String outputFileName = "C:/tmp/output.csv";
+        int numberOfMinima = 1000;
 
         Data[][][][] data = new Data[52][52][52][52];
         Random random = new Random();
@@ -132,6 +133,25 @@ public class Main {
         }
 
         // And finally dump it all to a csv file
+        try (FileWriter outputF = new FileWriter(outputFileName)) {
+            for (int w = 1; w < 51; w++) {
+                for (int x = 1; x < 51; x++) {
+                    for (int y = 1; y < 51; y++) {
+                        for (int z = 1; z < 51; z++) {
+                            String aS = "";
+                            Data d = data[w][x][y][z];
+                            aS += w + "," + x + "," + y + "," + z + "," + d.getValue() +
+                                      "," + d.getRank() + "," + d.getType();
+                            outputF.write(aS + "\n");
+                        }
+                    }
+                }
+            }
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         System.out.println("DONE.");
     }
