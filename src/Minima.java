@@ -12,13 +12,12 @@ public class Minima {
 
     // Constructor
     public Minima() {
-        Random random = new Random();
-        this.w = random.nextInt(50) + 1;
-        this.x = random.nextInt(50) + 1;
-        this.y = random.nextInt(50) + 1;
-        this.z = random.nextInt(50) + 1;
-        this.width = random.nextDouble() * 10;
-        this.depth = random.nextDouble();
+        this.w = RNG.GLOBAL.nextInt(50) + 1;
+        this.x = RNG.GLOBAL.nextInt(50) + 1;
+        this.y = RNG.GLOBAL.nextInt(50) + 1;
+        this.z = RNG.GLOBAL.nextInt(50) + 1;
+        this.width = RNG.GLOBAL.nextDouble() * 10;
+        this.depth = RNG.GLOBAL.nextDouble();
     }
 
     // Gets
